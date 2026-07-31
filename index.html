@@ -676,23 +676,13 @@ input[type=color]{height:48px;padding:5px;cursor:pointer}
         </div>
 
         <div class="section-title">Structura overlay-ului</div>
-        <div class="grid2">
-          <div class="field">
-            <label for="cameraZone">Zona transparentă</label>
-            <select id="cameraZone">
-              <option>Sus, pentru webcam</option>
-              <option>Sus, pentru gameplay</option>
-              <option>Fără zonă transparentă</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="bottomZone">Zona de jos</label>
-            <select id="bottomZone">
-              <option>Fundal negru</option>
-              <option>Transparentă</option>
-              <option>Altă culoare</option>
-            </select>
-          </div>
+        <div class="field">
+          <label for="cameraZone">Zona transparentă</label>
+          <select id="cameraZone">
+            <option>Sus, pentru webcam</option>
+            <option>Sus, pentru gameplay</option>
+            <option>Fără zonă transparentă</option>
+          </select>
         </div>
 
         <div class="field">
@@ -822,7 +812,6 @@ Culoare fundal: ${backgroundColor.value}
 Culoarea numelui: ${titleColor.value}
 Gradient animat pe nume: ${titleGradientToggle.checked ? 'Da' : 'Nu'}
 Zona transparentă: ${$('cameraZone').value}
-Zona de jos: ${$('bottomZone').value}
 Texte afișate în bară: ${messageInputs.map(input => input.value.trim()).filter(Boolean).join(' | ') || 'Nu am specificat'}
 Efecte: ${selectedEffects()}
 Alte cerințe: ${$('details').value.trim() || 'Nu am specificat'}
