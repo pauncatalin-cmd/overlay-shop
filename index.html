@@ -482,8 +482,6 @@ input[type=color]{height:48px;padding:5px;cursor:pointer}
             <select id="platform">
               <option>TikTok Live Studio</option>
               <option>OBS Studio</option>
-              <option>Streamlabs</option>
-              <option>Altă platformă</option>
             </select>
           </div>
         </div>
@@ -573,7 +571,7 @@ input[type=color]{height:48px;padding:5px;cursor:pointer}
 
     <aside class="panel preview-wrap">
       <h2>Previzualizare</h2>
-      <p class="panel-note">Culorile și textul central se actualizează automat.</p>
+      <p class="panel-note">Previzualizarea este orientativă și are rolul de a ilustra aspectul general. Overlay-ul final va fi realizat manual, cu animații și finisaje mult mai bine integrate.</p>
 
       <div class="phone-shell">
         <div class="preview" id="preview" style="--c1:#00eaff;--c2:#ff4fd8">
@@ -604,7 +602,7 @@ input[type=color]{height:48px;padding:5px;cursor:pointer}
           <span class="particle" style="left:84%;--p:#ff4fd8;--d:6.2s;--delay:2.5s;--drift:-20px"></span>
         </div>
       </div>
-      <div class="preview-label">Model orientativ, format vertical 1080 × 1920</div>
+      <div class="preview-label">⚠️ Aceasta este doar o previzualizare orientativă. Overlay-ul final va avea animații mai fluide, efecte mai complexe și un aspect vizual superior.</div>
 
       <div class="price-box">
         <div class="price-row">
@@ -697,7 +695,7 @@ function validate(){
 $('whatsappBtn').addEventListener('click',()=>{
   if(!validate()) return;
   const message = encodeURIComponent(buildMessage());
-  window.open(`https://wa.me/?text=${message}`,'_blank');
+  window.open(`https://wa.me/491794487220?text=${message}`,'_blank');
 });
 
 $('copyBtn').addEventListener('click',async()=>{
