@@ -417,6 +417,46 @@ input[type=color]{height:48px;padding:5px;cursor:pointer}
   background:rgba(255,255,255,.05);
   border:1px solid rgba(103,239,255,.18);
 }
+
+.social-links{
+  margin-top:18px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+.social-link{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  min-height:92px;
+  padding:12px 8px;
+  border-radius:16px;
+  color:#fff;
+  text-decoration:none;
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(103,239,255,.16);
+  transition:.2s;
+}
+.social-link:hover{
+  transform:translateY(-2px);
+  box-shadow:0 0 18px rgba(103,239,255,.13);
+}
+.social-link svg{
+  width:30px;
+  height:30px;
+  display:block;
+}
+.social-link span{
+  font-size:13px;
+  font-weight:800;
+}
+@media(max-width:420px){
+  .social-links{grid-template-columns:1fr}
+  .social-link{min-height:72px;flex-direction:row}
+}
+
 .notice{
   margin-top:12px;
   min-height:20px;
@@ -474,19 +514,30 @@ input[type=color]{height:48px;padding:5px;cursor:pointer}
       <form id="orderForm">
         <div class="grid2">
           <div class="field">
-            <label for="name">Numele tău *</label>
-            <input id="name" required placeholder="Exemplu: Andrei">
+            <label for="name">Numele tău</label>
+            <input id="name" placeholder="Exemplu: Andrei">
           </div>
           <div class="field">
-            <label for="contact">Discord, Instagram sau telefon *</label>
-            <input id="contact" required placeholder="@username sau număr">
+            <label for="discord">Discord</label>
+            <input id="discord" placeholder="Exemplu: @username">
           </div>
         </div>
 
         <div class="grid2">
           <div class="field">
-            <label for="brand">Textul principal din chenar *</label>
-            <input id="brand" required value="KIP" placeholder="Exemplu: KIP">
+            <label for="instagram">Instagram</label>
+            <input id="instagram" placeholder="Exemplu: @username">
+          </div>
+          <div class="field">
+            <label for="phone">Telefon</label>
+            <input id="phone" type="tel" placeholder="Exemplu: +49 123 456789">
+          </div>
+        </div>
+
+        <div class="grid2">
+          <div class="field">
+            <label for="brand">Textul principal din chenar</label>
+            <input id="brand" value="KIP" placeholder="Exemplu: KIP">
           </div>
           <div class="field">
             <label for="platform">Platforma folosită</label>
@@ -599,8 +650,22 @@ input[type=color]{height:48px;padding:5px;cursor:pointer}
 
       <div class="actions">
         <button type="button" class="btn primary" id="whatsappBtn">Trimite cererea pe WhatsApp</button>
-        <button type="button" class="btn secondary" id="copyBtn">Copiază cererea</button>
         <button type="button" class="btn ghost" id="resetBtn">Resetează formularul</button>
+      </div>
+
+      <div class="social-links" aria-label="Conturile KIP">
+        <a class="social-link" href="https://www.tiktok.com/@kip.ro/live?enter_from_merge=share&enter_method=share_copy_link" target="_blank" rel="noopener noreferrer" aria-label="TikTok kip.ro">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.6 5.82a4.57 4.57 0 0 1-2.88-2.03v10.03a4.9 4.9 0 1 1-4.22-4.85v2.73a2.2 2.2 0 1 0 1.5 2.08V2h2.75a4.57 4.57 0 0 0 2.85 2.95v.87z"/></svg>
+          <span>kip.ro</span>
+        </a>
+        <a class="social-link" href="https://kick.com/kipzone" target="_blank" rel="noopener noreferrer" aria-label="Kick kipzone">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#53FC18" d="M3 3h6v6h3V6h3V3h6v6h-3v6h3v6h-6v-3h-3v3H9v-6H3V3zm6 6H6v3h3V9zm6 3h-3v3h3v-3z"/></svg>
+          <span>kipzone</span>
+        </a>
+        <a class="social-link" href="https://www.youtube.com/@kipanu" target="_blank" rel="noopener noreferrer" aria-label="YouTube kipanu">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#FF0000" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8z"/><path fill="#fff" d="M9.6 15.6V8.4L15.8 12l-6.2 3.6z"/></svg>
+          <span>kipanu</span>
+        </a>
       </div>
       <div class="notice" id="notice"></div>
     </aside>
@@ -652,7 +717,9 @@ function buildMessage(){
   return `Salut! Doresc un overlay personalizat prin KIP Overlay Studio.
 
 Nume: ${$('name').value.trim()}
-Contact: ${$('contact').value.trim()}
+Discord: ${$('discord').value.trim() || 'Nu am specificat'}
+Instagram: ${$('instagram').value.trim() || 'Nu am specificat'}
+Telefon: ${$('phone').value.trim() || 'Nu am specificat'}
 Text principal: ${brand.value.trim()}
 Platformă: ${$('platform').value}
 Stil: ${$('style').value}
@@ -668,7 +735,7 @@ Preț: 15,00 €`;
 }
 
 function validate(){
-  return form.reportValidity();
+  return true;
 }
 
 [brand,color1,color2,...messageInputs].forEach(el => el.addEventListener('input',updatePreview));
@@ -678,16 +745,6 @@ $('whatsappBtn').addEventListener('click',()=>{
   if(!validate()) return;
   const message = encodeURIComponent(buildMessage());
   window.open(`https://wa.me/491794487220?text=${message}`,'_blank');
-});
-
-$('copyBtn').addEventListener('click',async()=>{
-  if(!validate()) return;
-  try{
-    await navigator.clipboard.writeText(buildMessage());
-    $('notice').textContent = 'Cererea a fost copiată.';
-  }catch{
-    $('notice').textContent = 'Nu am putut copia automat.';
-  }
 });
 
 $('resetBtn').addEventListener('click',()=>{
